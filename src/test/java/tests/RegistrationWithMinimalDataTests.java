@@ -9,6 +9,7 @@ public class RegistrationWithMinimalDataTests extends TestBase{
     @Test
     void successfulRegistrationWithMinimalDataTest() {
         registrationPage.openPage()
+                .removeBanner()
                 .setFirstName("Johny")
                 .setLastName("Bond")
                 .setGender("Other")

@@ -9,6 +9,7 @@ public class NegativeValuesRegistrationTests extends TestBase{
     @Test
     void invalidFirstNameRegistrationTest() {
         registrationPage.openPage()
+                .removeBanner()
                 .setFirstName("")
                 .setLastName("Bond")
                 .setGender("Other")
