@@ -1,11 +1,11 @@
 package pages;
 
+import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.conditions.Value;
 import pages.components.CalendarComponent;
 import pages.components.ResultsTableComponent;
 
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -104,6 +104,28 @@ public class RegistrationPage {
     }
     public RegistrationPage submitButton(){
         submitButton.click();
+        return this;
+    }
+    public RegistrationPage checkFirstNameError() {
+        firstNameInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+        return this;
+    }
+
+    public RegistrationPage checkLastNameError() {
+        lastNameInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+        return this;
+    }
+
+    public RegistrationPage checkGenderErrorExists(String value) {
+        $$(".custom-radio label")
+                .filterBy(cssValue("border-color", value))
+                .shouldHave(CollectionCondition.sizeGreaterThan(0));
+        return this;
+    }
+
+
+    public RegistrationPage checkMobileNumberError() {
+        userNumber.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
         return this;
     }
 }
