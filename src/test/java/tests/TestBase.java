@@ -5,8 +5,6 @@ import org.junit.jupiter.api.BeforeAll;
 import pages.RegistrationPage;
 
 public class TestBase {
-    private RegistrationPage registrationPage = new RegistrationPage();
-
     @BeforeAll
     static void beforeAll(){
         Configuration.browserSize = "1920x1080";
