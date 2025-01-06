@@ -1,23 +1,25 @@
 package tests;
+import pages.RegistrationPage;
 
 import org.junit.jupiter.api.Test;
-import pages.RegistrationPage;
+import utils.TestData;
 
 public class RegistrationWithMinimalDataTests extends TestBase{
     private RegistrationPage registrationPage = new RegistrationPage();
+    TestData testData = new TestData();
 
     @Test
     void successfulRegistrationWithMinimalDataTest() {
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName("Johny")
-                .setLastName("Bond")
-                .setGender("Other")
-                .setNumber("9520931995")
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
+                .setGender(testData.gender)
+                .setNumber(testData.telephoneNumber)
                 .submitButton();
 
-        registrationPage.verifyResult("Student Name", "Johny Bond")
-                .verifyResult("Gender", "Other")
-                .verifyResult("Mobile", "9520931995");
+        registrationPage.verifyResult("Student Name",testData.firstName + " " + testData.lastName)
+                .verifyResult("Gender", testData.gender)
+                .verifyResult("Mobile", testData.telephoneNumber);
     }
 }

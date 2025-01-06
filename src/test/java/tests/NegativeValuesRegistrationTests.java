@@ -1,10 +1,13 @@
 package tests;
 
+import utils.TestData;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
 public class NegativeValuesRegistrationTests extends TestBase{
     RegistrationPage registrationPage = new RegistrationPage();
+    TestData testData = new TestData();
+
 
     @Test
     void invalidFirstNameRegistrationTest() {
@@ -34,10 +37,10 @@ public class NegativeValuesRegistrationTests extends TestBase{
     void invalidPhoneNumberRegistrationTest() {
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName("Johny")
-                .setLastName("Bond")
-                .setGender("Other")
-                .setNumber("123")
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
+                .setGender(testData.gender)
+                .setNumber(" ")
                 .submitButton()
                 .checkMobileNumberError();
     }
@@ -46,9 +49,9 @@ public class NegativeValuesRegistrationTests extends TestBase{
     void invalidGenderRegistrationTest() {
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName("Johny")
-                .setLastName("Bond")
-                .setNumber("9520931995")
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
+                .setNumber(testData.telephoneNumber)
                 .submitButton()
                 .checkGenderErrorExists("rgb(220, 53, 69)");
     }
