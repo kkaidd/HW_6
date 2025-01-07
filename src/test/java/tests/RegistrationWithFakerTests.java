@@ -28,7 +28,8 @@ public class RegistrationWithFakerTests extends TestBase {
                 .setCity(testData.getUserCity())
                 .submitButton();
 
-        registrationPage.verifyResult("Student Name",testData.getFirstName() + " " + testData.getLastName())
+        registrationPage
+                .verifyResult("Student Name",testData.getFirstName() + " " + testData.getLastName())
                 .verifyResult("Student Email", testData.getUserEmail())
                 .verifyResult("Gender", testData.getGender())
                 .verifyResult("Mobile", testData.getTelephoneNumber())

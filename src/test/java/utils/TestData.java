@@ -9,78 +9,81 @@ public class TestData {
     Faker faker = new Faker(Locale.forLanguageTag("en"));
 
     public String getFirstName() {
-        return firstName;
+        return faker.name().firstName();
     }
 
     public String getLastName() {
-        return lastName;
+        return faker.name().lastName();
     }
 
     public String getUserEmail() {
-        return userEmail;
+        return faker.internet().emailAddress();
     }
 
     public String getGender() {
-        return gender;
+        return faker.options().option("Male", "Female", "Other");
     }
 
     public String getTelephoneNumber() {
-        return telephoneNumber;
+        return faker.phoneNumber().subscriberNumber(10);
     }
 
     public String getUserBirthDay() {
-        return userBirthDay;
+        return String.format("%02d", faker.number().numberBetween(1, 28));
     }
 
     public String getUserBirthMonth() {
-        return userBirthMonth;
+        return faker.options().option("January", "February", "March", "April",
+                    "May", "June", "July", "August", "September", "October", "November", "December");
     }
 
     public String getUserBirthYear() {
-        return userBirthYear;
+        return String.format("%s", faker.number().numberBetween(1924, 2024));
     }
 
     public String getSubject() {
-        return subject;
+        return faker.options().option("Hindi", "English", "Maths", "Physics", "Chemistry", "Biology",
+                "Computer Science", "Commerce", "Accounting", "Economics", "Arts", "Social Studies", "History",
+                "Civics");
     }
 
     public String getHobbies() {
-        return hobbies;
+        return faker.options().option("Sports", "Reading", "Music");
     }
 
     public String getPicture() {
-        return picture;
+        return faker.options().option("Screen.png", "Picture Screen.png");
     }
 
     public String getUserAddress() {
-        return userAddress;
+        return faker.address().fullAddress();
     }
 
     public String getUserState() {
-        return userState;
+        return faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
     }
 
     public String getUserCity() {
-        return userCity;
+        return getRandomCity(getUserState());
     }
 
-    public String firstName = faker.name().firstName();
-    public String lastName = faker.name().lastName();
-    public String userEmail = faker.internet().emailAddress();
-    public String gender = faker.options().option("Male", "Female", "Other");
-    public String telephoneNumber = faker.phoneNumber().subscriberNumber(10);
-    public String userBirthDay = String.format("%02d", faker.number().numberBetween(1, 28));
-    public String userBirthMonth = faker.options().option("January", "February", "March", "April",
-                    "May", "June", "July", "August", "September", "October", "November", "December");
-    public String userBirthYear = String.format("%s", faker.number().numberBetween(1924, 2024));
-    public String subject = faker.options().option("Hindi", "English", "Maths", "Physics", "Chemistry", "Biology",
-                    "Computer Science", "Commerce", "Accounting", "Economics", "Arts", "Social Studies", "History",
-                    "Civics");
-    public String hobbies = faker.options().option("Sports", "Reading", "Music");
-    public String picture = faker.options().option("Screen.png", "Picture Screen.png");
-    public String userAddress = faker.address().fullAddress();
-    public String userState = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
-    public String userCity = getRandomCity(userState);
+//    public String firstName = faker.name().firstName();
+//    public String lastName = faker.name().lastName();
+//    public String userEmail = faker.internet().emailAddress();
+//    public String gender = faker.options().option("Male", "Female", "Other");
+//    public String telephoneNumber = faker.phoneNumber().subscriberNumber(10);
+////    public String userBirthDay = String.format("%02d", faker.number().numberBetween(1, 28));
+////    public String userBirthMonth = faker.options().option("January", "February", "March", "April",
+////                    "May", "June", "July", "August", "September", "October", "November", "December");
+////    public String userBirthYear = String.format("%s", faker.number().numberBetween(1924, 2024));
+////    public String subject = faker.options().option("Hindi", "English", "Maths", "Physics", "Chemistry", "Biology",
+////                    "Computer Science", "Commerce", "Accounting", "Economics", "Arts", "Social Studies", "History",
+////                    "Civics");
+////    public String hobbies = faker.options().option("Sports", "Reading", "Music");
+////    public String picture = faker.options().option("Screen.png", "Picture Screen.png");
+////    public String userAddress = faker.address().fullAddress();
+////    public String userState = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
+//    public String userCity = getRandomCity(userState);
 
     public String getRandomCity(String state) {
         return switch (state) {
