@@ -63,9 +63,6 @@ public class TestData {
         return faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
     }
 
-    public String getUserCity() {
-        return getRandomCity(getUserState());
-    }
 
 //    public String firstName = faker.name().firstName()
 //    public String lastName = faker.name().lastName();

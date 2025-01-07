@@ -22,7 +22,7 @@ public class RegistrationWithFakerTests extends TestBase {
     String picture = testData.getPicture();
     String userAddress = testData.getUserAddress();
     String userState = testData.getUserState();
-    //String userCity = testData.getUserCity();
+    String userCity = testData.getRandomCity(userState);
 
     @Test
     void successfulSearchTest() {
@@ -39,7 +39,7 @@ public class RegistrationWithFakerTests extends TestBase {
                 .uploadFromClasspath(picture)
                 .setCurrentAddress(userAddress)
                 .setState(userState)
-                //.setCity(testData.getUserCity())
+                .setCity(testData.getRandomCity(userState))
                 .submitButton();
 
         registrationPage
@@ -51,8 +51,8 @@ public class RegistrationWithFakerTests extends TestBase {
                 .verifyResult("Subjects", subject)
                 .verifyResult("Hobbies", hobbies)
                 .verifyResult("Picture", picture)
-                .verifyResult("Address", userAddress);
- //               .verifyResult("State and City", userState + " " + userCity);
+                .verifyResult("Address", userAddress)
+                .verifyResult("State and City", userState + " " + userCity);
     }
 }
 
