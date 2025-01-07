@@ -67,7 +67,7 @@ public class TestData {
         return getRandomCity(getUserState());
     }
 
-//    public String firstName = faker.name().firstName();
+//    public String firstName = faker.name().firstName()
 //    public String lastName = faker.name().lastName();
 //    public String userEmail = faker.internet().emailAddress();
 //    public String gender = faker.options().option("Male", "Female", "Other");
@@ -91,7 +91,7 @@ public class TestData {
             case "Uttar Pradesh" -> faker.options().option("Agra", "Lucknow", "Merrut");
             case "Haryana" -> faker.options().option("Karnal", "Panipat");
             case "Rajasthan" -> faker.options().option("Jaipur", "Jaiselmer");
-            default -> null;
+            default -> "null";
         };
     }
 }

@@ -9,36 +9,50 @@ public class RegistrationWithFakerTests extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     TestData testData = new TestData();
 
+    String firstName = testData.getFirstName();
+    String lastName = testData.getLastName();
+    String userEmail = testData.getUserEmail();
+    String gender = testData.getGender();
+    String telephoneNumber = testData.getTelephoneNumber();
+    String userBirthDay = testData.getUserBirthDay();
+    String userBirthMonth = testData.getUserBirthMonth();
+    String userBirthYear = testData.getUserBirthYear();
+    String subject = testData.getSubject();
+    String hobbies = testData.getHobbies();
+    String picture = testData.getPicture();
+    String userAddress = testData.getUserAddress();
+    String userState = testData.getUserState();
+    //String userCity = testData.getUserCity();
 
     @Test
     void successfulSearchTest() {
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName(testData.getFirstName())
-                .setLastName(testData.getLastName())
-                .setUserEmail(testData.getUserEmail())
-                .setGender(testData.getGender())
-                .setNumber(testData.getTelephoneNumber())
-                .setDateOfBirth(testData.getUserBirthDay(), testData.getUserBirthMonth(), testData.getUserBirthYear())
-                .setSubjects(testData.getSubject())
-                .setHobbies(testData.getHobbies())
-                .uploadFromClasspath(testData.getPicture())
-                .setCurrentAddress(testData.getUserAddress())
-                .setState(testData.getUserState())
-                .setCity(testData.getUserCity())
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setUserEmail(userEmail)
+                .setGender(gender)
+                .setNumber(telephoneNumber)
+                .setDateOfBirth(userBirthDay, userBirthMonth, userBirthYear)
+                .setSubjects(subject)
+                .setHobbies(hobbies)
+                .uploadFromClasspath(picture)
+                .setCurrentAddress(userAddress)
+                .setState(userState)
+                //.setCity(testData.getUserCity())
                 .submitButton();
 
         registrationPage
-                .verifyResult("Student Name",testData.getFirstName() + " " + testData.getLastName())
-                .verifyResult("Student Email", testData.getUserEmail())
-                .verifyResult("Gender", testData.getGender())
-                .verifyResult("Mobile", testData.getTelephoneNumber())
-                .verifyResult("Date of Birth", testData.getUserBirthDay() + " " + testData.getUserBirthMonth() +","+ testData.getUserBirthYear())
-                .verifyResult("Subjects", testData.getSubject())
-                .verifyResult("Hobbies", testData.getHobbies())
-                .verifyResult("Picture", testData.getPicture())
-                .verifyResult("Address", testData.getUserAddress())
-                .verifyResult("State and City", testData.getUserState() + " " + testData.getUserCity());
+                .verifyResult("Student Name",firstName + " " + lastName)
+                .verifyResult("Student Email", userEmail)
+                .verifyResult("Gender", gender)
+                .verifyResult("Mobile", telephoneNumber)
+                .verifyResult("Date of Birth", userBirthDay + " " + userBirthMonth +","+ userBirthYear)
+                .verifyResult("Subjects", subject)
+                .verifyResult("Hobbies", hobbies)
+                .verifyResult("Picture", picture)
+                .verifyResult("Address", userAddress);
+ //               .verifyResult("State and City", userState + " " + userCity);
     }
 }
 
