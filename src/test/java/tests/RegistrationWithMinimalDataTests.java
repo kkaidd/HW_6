@@ -12,14 +12,14 @@ public class RegistrationWithMinimalDataTests extends TestBase{
     void successfulRegistrationWithMinimalDataTest() {
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName(testData.firstName)
-                .setLastName(testData.lastName)
-                .setGender(testData.gender)
-                .setNumber(testData.telephoneNumber)
+                .setFirstName(testData.getFirstName())
+                .setLastName(testData.getLastName())
+                .setGender(testData.getGender())
+                .setNumber(testData.getTelephoneNumber())
                 .submitButton();
 
-        registrationPage.verifyResult("Student Name",testData.firstName + " " + testData.lastName)
-                .verifyResult("Gender", testData.gender)
-                .verifyResult("Mobile", testData.telephoneNumber);
+        registrationPage.verifyResult("Student Name",testData.getFirstName() + " " + testData.getLastName())
+                .verifyResult("Gender", testData.getGender())
+                .verifyResult("Mobile", testData.getTelephoneNumber());
     }
 }

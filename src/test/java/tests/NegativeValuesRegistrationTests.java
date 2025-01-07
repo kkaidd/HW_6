@@ -13,10 +13,10 @@ public class NegativeValuesRegistrationTests extends TestBase{
     void invalidFirstNameRegistrationTest() {
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName("")
-                .setLastName("Bond")
-                .setGender("Other")
-                .setNumber("9520931995")
+                .setFirstName(" ")
+                .setLastName(testData.getLastName())
+                .setGender(testData.getGender())
+                .setNumber(testData.getTelephoneNumber())
                 .submitButton()
                 .checkFirstNameError();
     }
@@ -25,10 +25,10 @@ public class NegativeValuesRegistrationTests extends TestBase{
     void invalidLastNameRegistrationTest() {
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName("Johny")
-                .setLastName("")
-                .setGender("Other")
-                .setNumber("9520931995")
+                .setFirstName(testData.getFirstName())
+                .setLastName(" ")
+                .setGender(testData.getGender())
+                .setNumber(testData.getTelephoneNumber())
                 .submitButton()
                 .checkLastNameError();
     }
@@ -37,9 +37,9 @@ public class NegativeValuesRegistrationTests extends TestBase{
     void invalidPhoneNumberRegistrationTest() {
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName(testData.firstName)
-                .setLastName(testData.lastName)
-                .setGender(testData.gender)
+                .setFirstName(testData.getFirstName())
+                .setLastName(testData.getLastName())
+                .setGender(testData.getGender())
                 .setNumber(" ")
                 .submitButton()
                 .checkMobileNumberError();
@@ -49,9 +49,9 @@ public class NegativeValuesRegistrationTests extends TestBase{
     void invalidGenderRegistrationTest() {
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName(testData.firstName)
-                .setLastName(testData.lastName)
-                .setNumber(testData.telephoneNumber)
+                .setFirstName(testData.getFirstName())
+                .setLastName(testData.getLastName())
+                .setNumber(testData.getTelephoneNumber())
                 .submitButton()
                 .checkGenderErrorExists("rgb(220, 53, 69)");
     }

@@ -6,7 +6,63 @@ import java.util.Locale;
 
 public class TestData {
 
-    Faker faker = new Faker(new Locale("en"));
+    Faker faker = new Faker(Locale.forLanguageTag("en"));
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getTelephoneNumber() {
+        return telephoneNumber;
+    }
+
+    public String getUserBirthDay() {
+        return userBirthDay;
+    }
+
+    public String getUserBirthMonth() {
+        return userBirthMonth;
+    }
+
+    public String getUserBirthYear() {
+        return userBirthYear;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public String getHobbies() {
+        return hobbies;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public String getUserAddress() {
+        return userAddress;
+    }
+
+    public String getUserState() {
+        return userState;
+    }
+
+    public String getUserCity() {
+        return userCity;
+    }
 
     public String firstName = faker.name().firstName();
     public String lastName = faker.name().lastName();
@@ -21,30 +77,18 @@ public class TestData {
                     "Computer Science", "Commerce", "Accounting", "Economics", "Arts", "Social Studies", "History",
                     "Civics");
     public String hobbies = faker.options().option("Sports", "Reading", "Music");
-    public String picture = faker.options().option("Screen.png", "Screen duplication.png");
+    public String picture = faker.options().option("Screen.png", "Picture Screen.png");
     public String userAddress = faker.address().fullAddress();
     public String userState = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
     public String userCity = getRandomCity(userState);
 
     public String getRandomCity(String state) {
-        switch (state) {
-            case "NCR":
-                return faker.options().option("Delhi", "Gurgaon", "Noida");
-
-            case "Uttar Pradesh":
-                return faker.options().option("Agra", "Lucknow", "Merrut");
-
-            case "Haryana":
-                return faker.options().option("Karnal", "Panipat");
-
-            case "Rajasthan":
-                return faker.options().option("Jaipur", "Jaiselmer");
-
-            default:
-                return null;
-        }
-
+        return switch (state) {
+            case "NCR" -> faker.options().option("Delhi", "Gurgaon", "Noida");
+            case "Uttar Pradesh" -> faker.options().option("Agra", "Lucknow", "Merrut");
+            case "Haryana" -> faker.options().option("Karnal", "Panipat");
+            case "Rajasthan" -> faker.options().option("Jaipur", "Jaiselmer");
+            default -> null;
+        };
     }
-
-
 }
