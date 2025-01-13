@@ -1,19 +1,22 @@
 package tests;
 
+import utils.TestData;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
 public class NegativeValuesRegistrationTests extends TestBase{
     RegistrationPage registrationPage = new RegistrationPage();
+    TestData testData = new TestData();
+
 
     @Test
     void invalidFirstNameRegistrationTest() {
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName("")
-                .setLastName("Bond")
-                .setGender("Other")
-                .setNumber("9520931995")
+                .setFirstName(" ")
+                .setLastName(testData.getLastName())
+                .setGender(testData.getGender())
+                .setNumber(testData.getTelephoneNumber())
                 .submitButton()
                 .checkFirstNameError();
     }
@@ -22,10 +25,10 @@ public class NegativeValuesRegistrationTests extends TestBase{
     void invalidLastNameRegistrationTest() {
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName("Johny")
-                .setLastName("")
-                .setGender("Other")
-                .setNumber("9520931995")
+                .setFirstName(testData.getFirstName())
+                .setLastName(" ")
+                .setGender(testData.getGender())
+                .setNumber(testData.getTelephoneNumber())
                 .submitButton()
                 .checkLastNameError();
     }
@@ -34,10 +37,10 @@ public class NegativeValuesRegistrationTests extends TestBase{
     void invalidPhoneNumberRegistrationTest() {
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName("Johny")
-                .setLastName("Bond")
-                .setGender("Other")
-                .setNumber("123")
+                .setFirstName(testData.getFirstName())
+                .setLastName(testData.getLastName())
+                .setGender(testData.getGender())
+                .setNumber(" ")
                 .submitButton()
                 .checkMobileNumberError();
     }
@@ -46,9 +49,9 @@ public class NegativeValuesRegistrationTests extends TestBase{
     void invalidGenderRegistrationTest() {
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName("Johny")
-                .setLastName("Bond")
-                .setNumber("9520931995")
+                .setFirstName(testData.getFirstName())
+                .setLastName(testData.getLastName())
+                .setNumber(testData.getTelephoneNumber())
                 .submitButton()
                 .checkGenderErrorExists("rgb(220, 53, 69)");
     }
